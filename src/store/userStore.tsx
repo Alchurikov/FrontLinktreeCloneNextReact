@@ -9,12 +9,13 @@ interface UserState {
   image: string;
   bio: string;
   theme: any;
-  colors: any;
+  colors: any[];
   allLinks: any;
   isMobile: boolean;
   updatedLinkId: number;
   addLinkOverlay: boolean;
   isPreviewOverlay: boolean;
+  setColors: (colors: any[]) => void;
 }
 
 export const useUserStore = create<UserState>()(
@@ -27,12 +28,13 @@ export const useUserStore = create<UserState>()(
       image: '',
       bio: '',
       theme: null,
-      colors: null,
+      colors: [],
       allLinks: null,
       isMobile: false,
       updatedLinkId: 0,
       addLinkOverlay: false,
       isPreviewOverlay: false,
+      setColors: (colors: any[]) => set({ colors }),
     }),
     {
       name: 'user-storage',
